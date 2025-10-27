@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/App.css";
 import Header from "./components/Header";
 import Timer from "./components/Timer";
@@ -10,6 +10,11 @@ function App() {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isReportOpen, setIsReportOpen] = useState(false);
   const [theme, setTheme] = useState("red");
+
+  // ✅ Pindahkan useEffect ke dalam fungsi
+  useEffect(() => {
+    document.body.className = `theme-${theme}`;
+  }, [theme]);
 
   return (
     <div className={`app theme-${theme}`}>
